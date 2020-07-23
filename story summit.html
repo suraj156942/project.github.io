@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Story Summit</title>
+	<style>
+		
+input[type=text],select,textarea{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+input[type=password] {
+	width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+	width:800px;
+	margin:2px auto;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  box-shadow: 2px 2px 2px black;
+
+
+}
+h3{text-align: center;text-shadow: 1px 0px 2px black;
+    text-transform: uppercase;
+    color: white;}
+body {
+    /* background-image: repeating-linear-gradient(45deg, black, transparent 100px); */
+    background-image: linear-gradient(red, yellow, green);
+}
+
+</style>
+	
+</head>
+<body>
+	<h3>Story Summit</h3>
+<div>
+  <form action="#"onsubmit="return validation()">
+    <label for="fname">Author Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name.." autocomplete="off"><span id="username" style="color:red;" ></span><br>
+
+        <label for="country">Categories</label>
+    <select  name="country" id="selection">
+    	<option value="choose one">choose one</option>
+      <option value="Tech">Technical</option>
+      <option value="Music">Music</option>
+      <option value="Dance">Dance</option>
+      <option value="Love">Love</option>
+    </select>
+    <span id="username1" style="color:red;"></span>
+    <br><br>
+   
+     <label for=" Mobile Number">Contact Number</label>
+    <input type="password" id="mobile" name="password" placeholder="Your Contact Number.."autocomplete="off"><span id="mobilerror" style="color:red;"></span><br>
+     <label for=" email"> Email ID</label>
+    <input type="password" id="email" name="password" placeholder="Your Email ID.."autocomplete="off"><span id="emailerror" style="color:red;"></span><br>
+	  <!-- <center><p id="showdata"></p></center> -->
+      <textarea id="subject" name="subject" placeholder="Write something.."rows="10"cols="50"autocomplete="off"></textarea>
+     <center><p id="showdata" style="color:red;"></p></center>
+    <input type="submit" value="Submit">
+	  </form>
+</div>
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+		function validation() {
+
+
+		var user=document.getElementById("fname").value;
+		var select=document.getElementById("selection").value;
+		var mobile=document.getElementById("mobile").value;
+		var email=document.getElementById("email").value;
+		if(user=="")
+		{
+			document.getElementById("username").innerHTML=" **fill username";
+			return false;
+
+		}
+		else
+		{
+			document.getElementById("username").innerHTML="";
+		}
+		if((user.length<=2) || (user.length>=20))
+		{
+			document.getElementById("username").innerHTML=" **fill username between 2 and 20";
+			return false;
+		}
+		else {document.getElementById("username").innerHTML="";}
+		
+		if(!isNaN(user))
+		{
+			document.getElementById("username").innerHTML=" **character only";
+			return false;
+		}
+		else {document.getElementById("username").innerHTML="";}
+         if(select=="choose one")
+		{
+			document.getElementById("username1").innerHTML=" **select one";
+			return false;
+		}
+		else {document.getElementById("username1").innerHTML="";}
+		if(mobile=="")
+		{
+			document.getElementById("mobilerror").innerHTML=" **fill mobile Number";
+			return false;
+
+		}
+		else{document.getElementById("mobilerror").innerHTML="";}
+		if(isNaN(mobile))
+		{
+			document.getElementById("mobilerror").innerHTML=" **Digit only";
+			return false;
+		}
+		else {document.getElementById("mobilerror").innerHTML="";}
+		if(mobile.length!=10)
+		{
+			document.getElementById("mobilerror").innerHTML=" ** 10 Digit only";
+			return false;
+		}
+       else {document.getElementById("mobilerror").innerHTML="";}
+		if(email==""){document.getElementById("emailerror").innerHTML=" **fill Email id";return false;}
+		else {document.getElementById("emailerror").innerHTML="";}
+		var noc=document.getElementById("subject").value.length;
+		var now=document.getElementById("subject").value;
+		now=now.match(/\w+/g);
+		now=now.length;
+         
+		document.getElementById("showdata").innerHTML=`Written character is ${noc}<br/>Written word is ${now}`
+		return false;
+		
+}
+	</script>
+
+</body>
+</html>
